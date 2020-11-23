@@ -30,7 +30,7 @@
   "workspaces": {
     "packages": [
       "functions/**",
-      "common-libs/**"
+      "common/**"
     ],
     "nohoist": [
       "**"

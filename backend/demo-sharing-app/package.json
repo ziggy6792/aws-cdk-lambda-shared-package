@@ -29,7 +29,7 @@
   "private": true,
   "workspaces": {
     "packages": [
-      "amplify/backend/functions/**"
+      "functions/**"
     ],
     "nohoist": [
       "**"

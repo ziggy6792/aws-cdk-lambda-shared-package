@@ -1,0 +1,133 @@
+Resources:
+  HelloWorldLambdaServiceRole0CED0093:
+    Type: AWS::IAM::Role
+    Properties:
+      AssumeRolePolicyDocument:
+        Statement:
+          - Action: sts:AssumeRole
+            Effect: Allow
+            Principal:
+              Service: lambda.amazonaws.com
+        Version: "2012-10-17"
+      ManagedPolicyArns:
+        - Fn::Join:
+            - ""
+            - - "arn:"
+              - Ref: AWS::Partition
+              - :iam::aws:policy/service-role/AWSLambdaBasicExecutionRole
+    Metadata:
+      aws:cdk:path: DemoSharingAppStack/HelloWorldLambda/ServiceRole/Resource
+  HelloWorldLambda5A02458E:
+    Type: AWS::Lambda::Function
+    Properties:
+      Code:
+        S3Bucket:
+          Ref: AssetParametersd5d21038760bb46ff0ec65beabcb379a6cc89a4c0f0f4ac379cd1fb95ca6ef9fS3BucketAFE669D6
+        S3Key:
+          Fn::Join:
+            - ""
+            - - Fn::Select:
+                  - 0
+                  - Fn::Split:
+                      - "||"
+                      - Ref: AssetParametersd5d21038760bb46ff0ec65beabcb379a6cc89a4c0f0f4ac379cd1fb95ca6ef9fS3VersionKey80CBB1D7
+              - Fn::Select:
+                  - 1
+                  - Fn::Split:
+                      - "||"
+                      - Ref: AssetParametersd5d21038760bb46ff0ec65beabcb379a6cc89a4c0f0f4ac379cd1fb95ca6ef9fS3VersionKey80CBB1D7
+      Handler: index.handler
+      Role:
+        Fn::GetAtt:
+          - HelloWorldLambdaServiceRole0CED0093
+          - Arn
+      Runtime: nodejs12.x
+    DependsOn:
+      - HelloWorldLambdaServiceRole0CED0093
+    Metadata:
+      aws:cdk:path: DemoSharingAppStack/HelloWorldLambda/Resource
+      aws:asset:path: /Users/sive/Documents/Training/serverless/aws-cdk-lambda-shared-package/backend/demo-sharing-app/functions/hello-world
+      aws:asset:property: Code
+  CDKMetadata:
+    Type: AWS::CDK::Metadata
+    Properties:
+      Modules: aws-cdk=1.74.0,@aws-cdk/assets=1.74.0,@aws-cdk/aws-applicationautoscaling=1.74.0,@aws-cdk/aws-autoscaling-common=1.74.0,@aws-cdk/aws-cloudwatch=1.74.0,@aws-cdk/aws-codeguruprofiler=1.74.0,@aws-cdk/aws-ec2=1.74.0,@aws-cdk/aws-events=1.74.0,@aws-cdk/aws-iam=1.74.0,@aws-cdk/aws-kms=1.74.0,@aws-cdk/aws-lambda=1.74.0,@aws-cdk/aws-logs=1.74.0,@aws-cdk/aws-s3=1.74.0,@aws-cdk/aws-s3-assets=1.74.0,@aws-cdk/aws-sqs=1.74.0,@aws-cdk/aws-ssm=1.74.0,@aws-cdk/cloud-assembly-schema=1.74.0,@aws-cdk/core=1.74.0,@aws-cdk/cx-api=1.74.0,@aws-cdk/region-info=1.74.0,jsii-runtime=node.js/v14.14.0
+    Metadata:
+      aws:cdk:path: DemoSharingAppStack/CDKMetadata/Default
+    Condition: CDKMetadataAvailable
+Parameters:
+  AssetParametersd5d21038760bb46ff0ec65beabcb379a6cc89a4c0f0f4ac379cd1fb95ca6ef9fS3BucketAFE669D6:
+    Type: String
+    Description: S3 bucket for asset "d5d21038760bb46ff0ec65beabcb379a6cc89a4c0f0f4ac379cd1fb95ca6ef9f"
+  AssetParametersd5d21038760bb46ff0ec65beabcb379a6cc89a4c0f0f4ac379cd1fb95ca6ef9fS3VersionKey80CBB1D7:
+    Type: String
+    Description: S3 key for asset version "d5d21038760bb46ff0ec65beabcb379a6cc89a4c0f0f4ac379cd1fb95ca6ef9f"
+  AssetParametersd5d21038760bb46ff0ec65beabcb379a6cc89a4c0f0f4ac379cd1fb95ca6ef9fArtifactHash19CA31CB:
+    Type: String
+    Description: Artifact hash for asset "d5d21038760bb46ff0ec65beabcb379a6cc89a4c0f0f4ac379cd1fb95ca6ef9f"
+Conditions:
+  CDKMetadataAvailable:
+    Fn::Or:
+      - Fn::Or:
+          - Fn::Equals:
+              - Ref: AWS::Region
+              - ap-east-1
+          - Fn::Equals:
+              - Ref: AWS::Region
+              - ap-northeast-1
+          - Fn::Equals:
+              - Ref: AWS::Region
+              - ap-northeast-2
+          - Fn::Equals:
+              - Ref: AWS::Region
+              - ap-south-1
+          - Fn::Equals:
+              - Ref: AWS::Region
+              - ap-southeast-1
+          - Fn::Equals:
+              - Ref: AWS::Region
+              - ap-southeast-2
+          - Fn::Equals:
+              - Ref: AWS::Region
+              - ca-central-1
+          - Fn::Equals:
+              - Ref: AWS::Region
+              - cn-north-1
+          - Fn::Equals:
+              - Ref: AWS::Region
+              - cn-northwest-1
+          - Fn::Equals:
+              - Ref: AWS::Region
+              - eu-central-1
+      - Fn::Or:
+          - Fn::Equals:
+              - Ref: AWS::Region
+              - eu-north-1
+          - Fn::Equals:
+              - Ref: AWS::Region
+              - eu-west-1
+          - Fn::Equals:
+              - Ref: AWS::Region
+              - eu-west-2
+          - Fn::Equals:
+              - Ref: AWS::Region
+              - eu-west-3
+          - Fn::Equals:
+              - Ref: AWS::Region
+              - me-south-1
+          - Fn::Equals:
+              - Ref: AWS::Region
+              - sa-east-1
+          - Fn::Equals:
+              - Ref: AWS::Region
+              - us-east-1
+          - Fn::Equals:
+              - Ref: AWS::Region
+              - us-east-2
+          - Fn::Equals:
+              - Ref: AWS::Region
+              - us-west-1
+          - Fn::Equals:
+              - Ref: AWS::Region
+              - us-west-2
+

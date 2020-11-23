@@ -29,7 +29,8 @@
   "private": true,
   "workspaces": {
     "packages": [
-      "functions/**"
+      "functions/**",
+      "common-libs/**"
     ],
     "nohoist": [
       "**"

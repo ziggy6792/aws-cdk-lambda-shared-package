@@ -8,7 +8,7 @@ exports.handler = async function (event: AWSLambda.APIGatewayEvent) {
 
   const result = mylib();
 
-  console.log(`result from lib is ${result}`);
+  console.log(`Result from lib is ${result}`);
 
   return {
     statusCode: 200,

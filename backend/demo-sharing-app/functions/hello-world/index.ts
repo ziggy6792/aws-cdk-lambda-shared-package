@@ -1,5 +1,5 @@
 import { v4 as uuid } from 'uuid';
-import mylib from 'my-lib/MyLib';
+import mylib from 'my-lib';
 
 exports.handler = async function (event: AWSLambda.APIGatewayEvent) {
   console.log('event', JSON.stringify(event, null, 0));

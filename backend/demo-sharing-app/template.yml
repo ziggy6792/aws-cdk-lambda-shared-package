@@ -22,7 +22,7 @@ Resources:
     Properties:
       Code:
         S3Bucket:
-          Ref: AssetParametersd5d21038760bb46ff0ec65beabcb379a6cc89a4c0f0f4ac379cd1fb95ca6ef9fS3BucketAFE669D6
+          Ref: AssetParameters1e04ce3fc0165c2b965b99b4cd0df284fe30bf763988ea66575d31a9278e348aS3Bucket5622D862
         S3Key:
           Fn::Join:
             - ""
@@ -30,12 +30,12 @@ Resources:
                   - 0
                   - Fn::Split:
                       - "||"
-                      - Ref: AssetParametersd5d21038760bb46ff0ec65beabcb379a6cc89a4c0f0f4ac379cd1fb95ca6ef9fS3VersionKey80CBB1D7
+                      - Ref: AssetParameters1e04ce3fc0165c2b965b99b4cd0df284fe30bf763988ea66575d31a9278e348aS3VersionKey0DC4F439
               - Fn::Select:
                   - 1
                   - Fn::Split:
                       - "||"
-                      - Ref: AssetParametersd5d21038760bb46ff0ec65beabcb379a6cc89a4c0f0f4ac379cd1fb95ca6ef9fS3VersionKey80CBB1D7
+                      - Ref: AssetParameters1e04ce3fc0165c2b965b99b4cd0df284fe30bf763988ea66575d31a9278e348aS3VersionKey0DC4F439
       Handler: index.handler
       Role:
         Fn::GetAtt:
@@ -56,15 +56,15 @@ Resources:
       aws:cdk:path: DemoSharingAppStack/CDKMetadata/Default
     Condition: CDKMetadataAvailable
 Parameters:
-  AssetParametersd5d21038760bb46ff0ec65beabcb379a6cc89a4c0f0f4ac379cd1fb95ca6ef9fS3BucketAFE669D6:
+  AssetParameters1e04ce3fc0165c2b965b99b4cd0df284fe30bf763988ea66575d31a9278e348aS3Bucket5622D862:
     Type: String
-    Description: S3 bucket for asset "d5d21038760bb46ff0ec65beabcb379a6cc89a4c0f0f4ac379cd1fb95ca6ef9f"
-  AssetParametersd5d21038760bb46ff0ec65beabcb379a6cc89a4c0f0f4ac379cd1fb95ca6ef9fS3VersionKey80CBB1D7:
+    Description: S3 bucket for asset "1e04ce3fc0165c2b965b99b4cd0df284fe30bf763988ea66575d31a9278e348a"
+  AssetParameters1e04ce3fc0165c2b965b99b4cd0df284fe30bf763988ea66575d31a9278e348aS3VersionKey0DC4F439:
     Type: String
-    Description: S3 key for asset version "d5d21038760bb46ff0ec65beabcb379a6cc89a4c0f0f4ac379cd1fb95ca6ef9f"
-  AssetParametersd5d21038760bb46ff0ec65beabcb379a6cc89a4c0f0f4ac379cd1fb95ca6ef9fArtifactHash19CA31CB:
+    Description: S3 key for asset version "1e04ce3fc0165c2b965b99b4cd0df284fe30bf763988ea66575d31a9278e348a"
+  AssetParameters1e04ce3fc0165c2b965b99b4cd0df284fe30bf763988ea66575d31a9278e348aArtifactHash34664E31:
     Type: String
-    Description: Artifact hash for asset "d5d21038760bb46ff0ec65beabcb379a6cc89a4c0f0f4ac379cd1fb95ca6ef9f"
+    Description: Artifact hash for asset "1e04ce3fc0165c2b965b99b4cd0df284fe30bf763988ea66575d31a9278e348a"
 Conditions:
   CDKMetadataAvailable:
     Fn::Or:
